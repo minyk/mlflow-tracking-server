@@ -22,8 +22,8 @@ if [ -z $AWS_SECRET_ACCESS_KEY ]; then
   exit 1
 fi
 
-mkdir -p $FILE_DIR && mlflow server \
-    --backend-store-uri file://${FILE_DIR} \
+mkdir -p /mnt/mesos/sandbox/$FILE_DIR && mlflow server \
+    --backend-store-uri file:///mnt/mesos/sandbox/${FILE_DIR} \
     --default-artifact-root s3://${AWS_BUCKET}/artifacts \
     --host 0.0.0.0 \
     --port $PORT
